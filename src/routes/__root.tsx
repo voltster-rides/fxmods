@@ -90,9 +90,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Plug-and-play throttles, baja lights, key ignitions, and bundles for Surron and e-bikes. Built by riders, for riders." },
       { name: "author", content: "FX Mods" },
       { property: "og:title", content: "FX Mods — Premium E-Bike & Surron Mods" },
-      { property: "og:description", content: "Plug-and-play throttles, baja lights, key ignitions, and bundles for Surron and e-bikes." },
+      { property: "og:description", content: "Plug-and-play throttles, baja lights, key ignitions, and bundles for Surron and e-bikes. Built by riders, for riders." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "twitter:title", content: "FX Mods — Premium E-Bike & Surron Mods" },
+      { name: "twitter:description", content: "Plug-and-play throttles, baja lights, key ignitions, and bundles for Surron and e-bikes. Built by riders, for riders." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/875f0fcc-9df4-46ba-a66e-b0e419ca06ff/id-preview-d65a1587--1de538b6-1eca-4312-9117-937ac4a5c225.lovable.app-1782159917801.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/875f0fcc-9df4-46ba-a66e-b0e419ca06ff/id-preview-d65a1587--1de538b6-1eca-4312-9117-937ac4a5c225.lovable.app-1782159917801.png" },
     ],
     links: [
       {
