@@ -36,25 +36,14 @@ export const CartDrawer = () => {
         <button
           type="button"
           aria-label="Open cart"
-          className="group/cart relative flex items-center gap-3 border border-white/10 bg-white/5 px-4 py-2.5 transition-all hover:border-primary/60"
+          className="relative inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
         >
-          <span className="relative inline-flex">
-            <ShoppingCart
-              className="h-5 w-5 text-foreground transition-colors group-hover/cart:text-primary"
-              strokeLinecap="square"
-              strokeLinejoin="miter"
-            />
-            {totalItems > 0 && (
-              <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground">
-                {totalItems}
-              </span>
-            )}
-          </span>
-          <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-widest text-foreground/40 transition-colors group-hover/cart:text-foreground">
-            Cart
-          </span>
-          <span className="pointer-events-none absolute right-0 top-0 h-1 w-1 border-r border-t border-primary opacity-0 transition-opacity group-hover/cart:opacity-100" />
-          <span className="pointer-events-none absolute bottom-0 left-0 h-1 w-1 border-b border-l border-primary opacity-0 transition-opacity group-hover/cart:opacity-100" />
+          <ShoppingCart className="h-6 w-6" strokeWidth={1.75} />
+          {totalItems > 0 && (
+            <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">
+              {totalItems}
+            </span>
+          )}
         </button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg flex flex-col h-full bg-card border-border">
