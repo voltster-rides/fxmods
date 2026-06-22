@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Sheet,
   SheetContent,
@@ -34,14 +33,29 @@ export const CartDrawer = () => {
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="relative border-border bg-background/60 hover:bg-primary hover:text-primary-foreground">
-          <ShoppingCart className="h-5 w-5" />
-          {totalItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs bg-primary text-primary-foreground">
-              {totalItems}
-            </Badge>
-          )}
-        </Button>
+        <button
+          type="button"
+          aria-label="Open cart"
+          className="group/cart relative flex items-center gap-3 border border-white/10 bg-white/5 px-4 py-2.5 transition-all hover:border-primary/60"
+        >
+          <span className="relative inline-flex">
+            <ShoppingCart
+              className="h-5 w-5 text-foreground transition-colors group-hover/cart:text-primary"
+              strokeLinecap="square"
+              strokeLinejoin="miter"
+            />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center bg-primary text-[10px] font-bold text-primary-foreground">
+                {totalItems}
+              </span>
+            )}
+          </span>
+          <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-widest text-foreground/40 transition-colors group-hover/cart:text-foreground">
+            Cart
+          </span>
+          <span className="pointer-events-none absolute right-0 top-0 h-1 w-1 border-r border-t border-primary opacity-0 transition-opacity group-hover/cart:opacity-100" />
+          <span className="pointer-events-none absolute bottom-0 left-0 h-1 w-1 border-b border-l border-primary opacity-0 transition-opacity group-hover/cart:opacity-100" />
+        </button>
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-lg flex flex-col h-full bg-card border-border">
         <SheetHeader className="flex-shrink-0">
