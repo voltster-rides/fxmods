@@ -72,7 +72,7 @@
   --popover-foreground: oklch(0.98 0.002 250);
   --primary: #E3FC02;                       /* lime button accent */
   --primary-foreground: #1F1F21;
-  --secondary: #027DB2;                     /* brand blue */
+  --secondary: oklch(0.28 0.005 250);
   --secondary-foreground: oklch(0.98 0.002 250);
   --muted: oklch(0.24 0.01 250);
   --muted-foreground: oklch(0.72 0.01 250);
@@ -92,7 +92,7 @@
   --sidebar-foreground: oklch(0.98 0.002 250);
   --sidebar-primary: #E3FC02;
   --sidebar-primary-foreground: #1F1F21;
-  --sidebar-accent: #027DB2;
+  --sidebar-accent: oklch(0.28 0.005 250);
   --sidebar-accent-foreground: oklch(0.98 0.002 250);
   --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: #E3FC02;
