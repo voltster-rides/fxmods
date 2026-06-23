@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, User } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 
 type NavLeaf = { to: string; label: string; description?: string };
@@ -120,6 +120,13 @@ export function SiteHeader() {
               className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
             >
               <Search className="h-5 w-5" strokeWidth={1.75} />
+            </button>
+            <button
+              type="button"
+              aria-label="Account"
+              className="hidden sm:inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+            >
+              <User className="h-5 w-5" strokeWidth={1.75} />
             </button>
             <CartDrawer />
           </div>
