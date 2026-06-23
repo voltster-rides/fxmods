@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ArrowRight } from "lucide-react";
 
 export function SiteFooter() {
   const [email, setEmail] = useState("");
@@ -13,45 +12,55 @@ export function SiteFooter() {
     setEmail("");
   };
   return (
-    <footer className="border-t border-border bg-card mt-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid gap-12 md:grid-cols-3">
+    <footer className="mt-16">
+      {/* Lime newsletter band */}
+      <div className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-20 md:py-24 text-center">
+          <h2 className="font-display uppercase text-4xl md:text-6xl tracking-tight">
+            Ride with us
+          </h2>
+          <p className="mt-4 text-sm md:text-base opacity-80">
+            Be the first to know about new drops and exclusive offers.
+          </p>
+          <form onSubmit={handleSubscribe} className="mt-8 mx-auto max-w-md flex items-center border border-primary-foreground/60 bg-transparent">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="flex-1 bg-transparent px-5 py-4 text-primary-foreground placeholder:text-primary-foreground/60 focus:outline-none"
+            />
+            <button type="submit" aria-label="Subscribe" className="px-5 py-4 hover:opacity-70 transition-opacity">
+              <ArrowRight className="h-5 w-5" />
+            </button>
+          </form>
+        </div>
+      </div>
+
+      {/* Dark footer */}
+      <div className="bg-card">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
-            <Link to="/" className="font-display text-3xl tracking-[0.2em] uppercase text-primary">
-              FX Mods
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              Premium plug-and-play upgrades for Surron and e-bikes. Built by riders, for riders.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-display text-sm tracking-[0.2em] uppercase mb-4">Shop</h4>
-            <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link to="/catalog" className="hover:text-primary">All Products</Link></li>
+            <h4 className="font-display text-sm tracking-[0.25em] uppercase mb-6">About FX</h4>
+            <ul className="space-y-4 text-sm uppercase tracking-[0.15em] text-muted-foreground font-display">
+              <li><Link to="/catalog" className="hover:text-primary">Catalog</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-display text-sm tracking-[0.2em] uppercase mb-4">Get on the list</h4>
-            <p className="text-sm text-muted-foreground mb-4">Early access to drops and exclusive deals.</p>
-            <form onSubmit={handleSubscribe} className="flex gap-2">
-              <Input
-                type="email"
-                placeholder="your@email.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="bg-background border-border"
-              />
-              <Button type="submit" className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold uppercase tracking-wider">
-                Join
-              </Button>
-            </form>
+          <div className="flex md:justify-end gap-6 items-start">
+            <Link to="/" className="font-display text-4xl uppercase tracking-tight text-primary">
+              FX<span className="text-foreground">.</span>
+            </Link>
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
+              We find freedom in the throttle, and the ride to find it is half the fun.
+            </p>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} FX Mods. All rights reserved.</p>
-          <p>Preorders may take 1–2 weeks to ship.</p>
+        <div className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 lg:px-12 py-6 text-xs text-muted-foreground text-center">
+            © {new Date().getFullYear()} FX Mods. Built by riders, for riders.
+          </div>
         </div>
       </div>
     </footer>

@@ -1,14 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowRight, Zap, Truck, Wrench } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
 import {
   PRODUCTS_QUERY,
   storefrontApiRequest,
   type ShopifyProduct,
 } from "@/lib/shopify";
+import heroImg from "@/assets/hero-surron.jpg";
+import throttleImg from "@/assets/feature-throttle.jpg";
+import lightsImg from "@/assets/feature-lights.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,106 +35,111 @@ function Index() {
     queryFn: () => fetchProducts(),
   });
 
-  const bundles = products.filter((p) =>
-    p.node.tags?.includes("bundle") || p.node.productType === "Bundle",
-  );
-  const singles = products.filter(
-    (p) => !(p.node.tags?.includes("bundle") || p.node.productType === "Bundle"),
-  );
-
   return (
     <div>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border">
-        <div className="absolute inset-0 bg-grid opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/40 to-background" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-40">
-          <div className="max-w-3xl">
-            <span className="inline-block text-xs font-display tracking-[0.3em] uppercase text-primary border border-primary px-3 py-1 mb-6">
-              EST. 2026 / Ride Smarter
-            </span>
-            <h1 className="font-display uppercase leading-[0.9] text-6xl md:text-8xl lg:text-9xl tracking-tight">
-              Built for the <span className="text-primary">throttle</span> twist.
+      {/* HERO — split layout */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className="order-2 lg:order-1">
+            <h1 className="font-display uppercase leading-[0.95] text-6xl md:text-7xl lg:text-8xl tracking-tight">
+              Freedom<br />to ride.
             </h1>
-            <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl">
-              Plug-and-play mods for Surron and e-bikes. No splicing, no headaches —
-              just upgrade and ride.
+            <p className="mt-8 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed">
+              As riders, we have a deep-rooted need to escape. Whether it's chasing
+              dust through the desert or carving the trails behind town, there's no
+              freedom quite like twisting the throttle on a bike built your way.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-display tracking-[0.2em] uppercase text-base h-12 px-8">
-                <Link to="/catalog">Shop All <ArrowRight className="ml-2 h-4 w-4" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-border font-display tracking-[0.2em] uppercase text-base h-12 px-8 hover:bg-secondary">
-                <a href="#bundles">View Bundles</a>
-              </Button>
+            <div className="mt-10">
+              <Link
+                to="/catalog"
+                className="inline-flex items-center bg-primary text-primary-foreground font-display tracking-[0.2em] uppercase text-sm px-10 py-4 hover:bg-primary/90 transition-colors"
+              >
+                Find Your Mod
+              </Link>
             </div>
           </div>
-        </div>
-        {/* edge decoration */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2 pr-6 text-right">
-          <span className="font-display text-[10rem] leading-none text-stroke opacity-40">FX</span>
-        </div>
-      </section>
-
-      {/* feature strip */}
-      <section className="border-b border-border bg-card">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { icon: Zap, t: "Plug N Play", d: "Zero wiring. Zero fuss." },
-            { icon: Wrench, t: "Rider-Tested", d: "Designed and abused by us." },
-            { icon: Truck, t: "Fast Shipping", d: "Preorders ship in 1–2 weeks." },
-          ].map(({ icon: Icon, t, d }) => (
-            <div key={t} className="flex items-center gap-4">
-              <Icon className="h-8 w-8 text-primary flex-shrink-0" />
-              <div>
-                <p className="font-display tracking-wider uppercase">{t}</p>
-                <p className="text-sm text-muted-foreground">{d}</p>
-              </div>
-            </div>
-          ))}
+          <div className="order-1 lg:order-2">
+            <img
+              src={heroImg}
+              alt="Surron rider catching air in the desert"
+              width={896}
+              height={1152}
+              className="w-full h-auto object-cover aspect-[3/4] lg:aspect-[4/5]"
+            />
+          </div>
         </div>
       </section>
 
       {/* PRODUCTS */}
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex items-end justify-between mb-10">
-          <div>
-            <p className="text-xs font-display tracking-[0.3em] uppercase text-primary mb-2">// Products</p>
-            <h2 className="font-display text-4xl md:text-6xl uppercase tracking-tight">The Lineup</h2>
-          </div>
-          <Link to="/catalog" className="hidden md:inline-flex items-center gap-2 text-sm font-display tracking-[0.2em] uppercase hover:text-primary">
-            View All <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        {singles.length === 0 ? (
-          <p className="text-muted-foreground">Loading products…</p>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {singles.map((p) => (
-              <ProductCard key={p.node.id} product={p} />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* BUNDLES */}
-      <section id="bundles" className="border-t border-border bg-card/50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="text-xs font-display tracking-[0.3em] uppercase text-primary mb-2">// Save More</p>
-              <h2 className="font-display text-4xl md:text-6xl uppercase tracking-tight">Bundles</h2>
-            </div>
-          </div>
-          {bundles.length === 0 ? (
-            <p className="text-muted-foreground">No bundles yet.</p>
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-12 md:py-20">
+          {products.length === 0 ? (
+            <p className="text-muted-foreground text-center py-20">No products found.</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {bundles.map((p) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-16">
+              {products.slice(0, 4).map((p) => (
                 <ProductCard key={p.node.id} product={p} />
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* TEAM / FEATURE SPLIT */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10 items-center">
+          <img
+            src={throttleImg}
+            alt="Custom throttle mod close-up"
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="w-full h-auto object-cover aspect-square"
+          />
+          <div>
+            <h2 className="font-display uppercase text-4xl md:text-5xl leading-[0.95] tracking-tight">
+              Built by riders<br />for riders.
+            </h2>
+            <p className="mt-8 text-base text-muted-foreground leading-relaxed max-w-sm">
+              "We design every mod on our own bikes first. If it doesn't survive a
+              season in the dirt, it doesn't ship — full stop."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CALLOUT BAR */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12">
+          <div className="bg-card p-10 md:p-14">
+            <h3 className="font-display uppercase text-2xl md:text-3xl tracking-tight max-w-2xl">
+              Plug-and-play, every time.
+            </h3>
+            <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
+              No splicing, no soldering, no headaches. Our harnesses click straight
+              into your stock connectors so you can be riding in minutes.
+            </p>
+            <Link
+              to="/catalog"
+              className="mt-6 inline-flex items-center gap-3 text-primary font-display tracking-[0.2em] uppercase text-sm hover:gap-4 transition-all"
+            >
+              Shop Mods <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BIG FEATURE IMAGE */}
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16">
+          <img
+            src={lightsImg}
+            alt="Baja lights cutting through the dark"
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="w-full h-auto object-cover aspect-[16/9]"
+          />
         </div>
       </section>
     </div>
