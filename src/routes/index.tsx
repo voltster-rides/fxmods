@@ -36,35 +36,46 @@ function Index() {
 
   return (
     <div>
-      {/* HERO — split layout */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div className="order-2 lg:order-1">
-            <h1 className="font-display uppercase leading-[0.95] text-6xl md:text-7xl lg:text-8xl tracking-tight">
-              Freedom<br />to ride.
-            </h1>
-            <p className="mt-8 text-base md:text-lg text-muted-foreground max-w-md leading-relaxed">
-              As riders, we have a deep-rooted need to escape. Whether it's chasing
-              dust through the desert or carving the trails behind town, there's no
-              freedom quite like twisting the throttle on a bike built your way.
-            </p>
-            <div className="mt-10">
-              <Link
-                to="/catalog"
-                className="inline-flex items-center bg-primary text-primary-foreground font-display tracking-[0.2em] uppercase text-sm px-10 py-4 hover:bg-primary/90 transition-colors"
+      {/* HERO — full-bleed overlay */}
+      <section className="relative isolate overflow-hidden bg-card">
+        <img
+          src={heroImg}
+          alt="Surron rider catching air in the desert"
+          width={1600}
+          height={900}
+          className="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
+        <div className="mx-auto flex min-h-[78vh] max-w-7xl flex-col items-center justify-center px-6 py-24 text-center lg:px-12">
+          <span className="font-display text-[11px] font-bold uppercase tracking-[0.3em] text-primary">
+            Plug-and-Play Performance
+          </span>
+          <h1 className="mt-6 font-display uppercase leading-[0.95] tracking-tight text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl max-w-5xl">
+            Freedom to ride.
+          </h1>
+          <p className="mt-8 max-w-xl text-base md:text-lg text-white/80 leading-relaxed">
+            Plug-and-play throttles, baja lights, and bundles engineered on our own
+            bikes — built to survive a season in the dirt.
+          </p>
+          <Link
+            to="/catalog"
+            className="mt-10 inline-flex items-center rounded-full bg-primary px-12 py-4 font-display text-sm uppercase tracking-[0.2em] text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            Discover Collection
+          </Link>
+          <div className="mt-12 flex items-center gap-3">
+            {[1, 2, 3].map((n, i) => (
+              <span
+                key={n}
+                className={`flex h-7 w-7 items-center justify-center rounded-full border text-[10px] font-bold ${
+                  i === 0
+                    ? "border-primary bg-primary text-primary-foreground"
+                    : "border-white/50 text-white/70"
+                }`}
               >
-                Find Your Mod
-              </Link>
-            </div>
-          </div>
-          <div className="order-1 lg:order-2">
-            <img
-              src={heroImg}
-              alt="Surron rider catching air in the desert"
-              width={896}
-              height={1152}
-              className="w-full h-auto object-cover aspect-[3/4] lg:aspect-[4/5]"
-            />
+                {n}
+              </span>
+            ))}
           </div>
         </div>
       </section>

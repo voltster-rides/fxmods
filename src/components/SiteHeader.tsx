@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ChevronDown, Search } from "lucide-react";
+import { ChevronDown, Search, User } from "lucide-react";
 import { CartDrawer } from "./CartDrawer";
 
 type NavLeaf = { to: string; label: string; description?: string };
@@ -35,16 +35,17 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 bg-background">
       {/* Announcement bar */}
-      <Link
-        to="/catalog"
-        className="flex items-center justify-center gap-2 bg-primary px-4 py-3 text-center text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
-      >
-        <span>New mods have landed</span>
-        <span aria-hidden>⚡</span>
-        <span className="inline-flex items-center gap-1">
-          Shop now <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.25} />
-        </span>
-      </Link>
+      <div className="bg-primary text-primary-foreground">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] lg:px-10">
+          <span className="flex-1 text-left">New drop: Surron Light Bee throttle kit</span>
+          <span aria-hidden className="hidden md:block">•</span>
+          <span className="hidden flex-1 text-center md:block">Free US shipping on orders $75+</span>
+          <span aria-hidden className="hidden md:block">•</span>
+          <Link to="/catalog" className="flex-1 text-right transition-opacity hover:opacity-80">
+            Use code RIDE10 for 10% off
+          </Link>
+        </div>
+      </div>
 
       {/* Main nav */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
@@ -119,6 +120,13 @@ export function SiteHeader() {
               className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
             >
               <Search className="h-5 w-5" strokeWidth={1.75} />
+            </button>
+            <button
+              type="button"
+              aria-label="Account"
+              className="hidden sm:inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+            >
+              <User className="h-5 w-5" strokeWidth={1.75} />
             </button>
             <CartDrawer />
           </div>
