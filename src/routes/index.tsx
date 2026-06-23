@@ -10,7 +10,6 @@ import {
 } from "@/lib/shopify";
 import heroImg from "@/assets/hero-surron.jpg";
 import throttleImg from "@/assets/feature-throttle.jpg";
-import lightsImg from "@/assets/feature-lights.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -129,19 +128,6 @@ function Index() {
         </div>
       </section>
 
-      {/* BIG FEATURE IMAGE */}
-      <section className="bg-background">
-        <div className="mx-auto max-w-7xl px-6 lg:px-12 py-16">
-          <img
-            src={lightsImg}
-            alt="Baja lights cutting through the dark"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="w-full h-auto object-cover aspect-[16/9]"
-          />
-        </div>
-      </section>
     </div>
   );
 }
