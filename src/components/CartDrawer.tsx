@@ -36,9 +36,9 @@ export const CartDrawer = () => {
         <button
           type="button"
           aria-label="Open cart"
-          className="relative inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+          className="relative inline-flex h-10 w-10 items-center justify-center text-white transition-opacity hover:opacity-80"
         >
-          <ShoppingCart className="h-6 w-6" strokeWidth={1.75} />
+          <ShoppingCart className="h-6 w-6" strokeWidth={2} />
           {totalItems > 0 && (
             <span className="absolute -top-0.5 -right-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">
               {totalItems}
