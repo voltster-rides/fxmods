@@ -22,20 +22,24 @@ const navItems: NavItem[] = [
     ],
   },
   {
-    label: "Explore",
+    label: "Collaborations",
     children: [
-      { to: "/", label: "Our Story", description: "Built by riders, for riders" },
-      { to: "/contact", label: "Support", description: "Install help & warranty" },
-      { to: "/contact", label: "Contact", description: "Get in touch" },
+      { to: "/catalog", label: "Surron × FX", description: "Signature collab drops" },
+      { to: "/catalog", label: "Team Riders", description: "Pro-spec builds" },
+      { to: "/catalog", label: "Limited Edition", description: "Numbered releases" },
     ],
   },
+  { label: "Compare", to: "/catalog" },
+  { label: "Blog", to: "/" },
+  { label: "About", to: "/" },
+  { label: "Theme Features", to: "/contact" },
 ];
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 bg-background">
+    <header className="sticky top-0 z-50">
       {/* Announcement bar */}
-      <div className="bg-primary text-primary-foreground">
+      <div className="bg-black text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3 text-[11px] font-bold uppercase tracking-[0.18em] lg:px-10">
           <span className="flex-1 text-left">New drop: Surron Light Bee throttle kit</span>
           <span aria-hidden className="hidden md:block">•</span>
@@ -48,45 +52,44 @@ export function SiteHeader() {
       </div>
 
       {/* Main nav */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
-        <div className="flex h-20 items-center justify-between">
+      <div className="bg-gradient-to-r from-[#3a4a2a] via-[#4a5a38] to-[#6a7a52] text-white">
+        <div className="mx-auto flex h-20 max-w-[1600px] items-center justify-between gap-8 px-6 lg:px-12">
           <Link
             to="/"
-            className="text-primary leading-none"
-            style={{ fontFamily: "'Pacifico', cursive", fontSize: "2.5rem" }}
+            className="text-white leading-none font-display uppercase tracking-tight"
+            style={{ fontSize: "2rem", letterSpacing: "-0.02em" }}
           >
-            FX Mods
+            IMPACT
           </Link>
 
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden md:flex items-center gap-8 lg:gap-10">
             {navItems.map((item) => (
               <div key={item.label} className="group relative">
                 {item.to ? (
                   <Link
                     to={item.to}
-                    className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/80 transition-colors group-hover:text-primary"
-                    activeProps={{ className: "text-primary" }}
+                    className="inline-flex items-center gap-1.5 text-[15px] font-bold text-white/95 transition-colors hover:text-white"
                   >
                     {item.label}
                     {item.children && (
-                      <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" strokeWidth={2.5} />
+                      <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" strokeWidth={2.5} />
                     )}
                   </Link>
                 ) : (
                   <button
                     type="button"
-                    className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/80 transition-colors group-hover:text-primary"
+                    className="inline-flex items-center gap-1.5 text-[15px] font-bold text-white/95 transition-colors hover:text-white"
                   >
                     {item.label}
                     {item.children && (
-                      <ChevronDown className="h-3 w-3 transition-transform group-hover:rotate-180" strokeWidth={2.5} />
+                      <ChevronDown className="h-4 w-4 transition-transform group-hover:rotate-180" strokeWidth={2.5} />
                     )}
                   </button>
                 )}
 
                 {item.children && (
                   <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-4 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
-                    <div className="border-t-2 border-primary bg-card shadow-2xl">
+                    <div className="border-t-2 border-primary bg-card text-foreground shadow-2xl">
                       <ul className="py-2">
                         {item.children.map((child) => (
                           <li key={child.label}>
@@ -113,20 +116,28 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 text-white">
+            <button
+              type="button"
+              className="hidden lg:inline-flex items-center gap-1.5 text-[15px] font-bold text-white/95 hover:text-white"
+            >
+              <span className="inline-flex h-6 w-6 items-center justify-center overflow-hidden rounded-full bg-white/10 text-xs">🇺🇸</span>
+              USD $
+              <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
+            </button>
             <button
               type="button"
               aria-label="Search"
-              className="inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+              className="inline-flex h-10 w-10 items-center justify-center text-white transition-opacity hover:opacity-80"
             >
-              <Search className="h-5 w-5" strokeWidth={1.75} />
+              <Search className="h-6 w-6" strokeWidth={2} />
             </button>
             <button
               type="button"
               aria-label="Account"
-              className="hidden sm:inline-flex h-10 w-10 items-center justify-center text-foreground transition-colors hover:text-primary"
+              className="hidden sm:inline-flex h-10 w-10 items-center justify-center text-white transition-opacity hover:opacity-80"
             >
-              <User className="h-5 w-5" strokeWidth={1.75} />
+              <User className="h-6 w-6" strokeWidth={2} />
             </button>
             <CartDrawer />
           </div>
