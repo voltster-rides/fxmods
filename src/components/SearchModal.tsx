@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import { Search, Loader2, X } from "lucide-react";
+import { Search, Loader2 } from "lucide-react";
 import { PRODUCTS_QUERY, storefrontApiRequest, type ShopifyProduct } from "@/lib/shopify";
 import { useFormatPrice } from "@/stores/currencyStore";
 
@@ -44,11 +44,8 @@ export function SearchModal({ open, onOpenChange }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent
-        showCloseButton={false}
-        className="max-w-2xl p-0 gap-0 bg-card border-border overflow-hidden top-[15%] translate-y-0"
-      >
-        <div className="flex items-center gap-3 border-b border-border px-5 py-4">
+      <DialogContent className="max-w-2xl p-0 gap-0 bg-card border-border overflow-hidden top-[15%] translate-y-0">
+        <div className="flex items-center gap-3 border-b border-border px-5 py-4 pr-14">
           <Search className="h-5 w-5 text-muted-foreground shrink-0" strokeWidth={2} />
           <input
             autoFocus
@@ -57,14 +54,6 @@ export function SearchModal({ open, onOpenChange }: Props) {
             placeholder="Search throttles, lights, bundles…"
             className="flex-1 bg-transparent text-base text-foreground placeholder:text-muted-foreground outline-none"
           />
-          <button
-            type="button"
-            onClick={() => onOpenChange(false)}
-            className="text-muted-foreground hover:text-foreground"
-            aria-label="Close search"
-          >
-            <X className="h-5 w-5" />
-          </button>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto">
