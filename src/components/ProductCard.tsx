@@ -4,10 +4,12 @@ import { Loader2, Plus } from "lucide-react";
 import { toast } from "sonner";
 import { useCartStore } from "@/stores/cartStore";
 import type { ShopifyProduct } from "@/lib/shopify";
+import { useFormatPrice } from "@/stores/currencyStore";
 
 export function ProductCard({ product }: { product: ShopifyProduct }) {
   const addItem = useCartStore((s) => s.addItem);
   const isLoading = useCartStore((s) => s.isLoading);
+  const format = useFormatPrice();
 
   const variant = product.node.variants.edges[0]?.node;
   const image = product.node.images.edges[0]?.node;
@@ -71,10 +73,10 @@ export function ProductCard({ product }: { product: ShopifyProduct }) {
         </h3>
         <div className="mt-auto flex items-center justify-between pt-2">
           <div className="flex items-baseline gap-2">
-            <span className="text-lg font-bold text-primary">${price.toFixed(2)}</span>
+            <span className="text-lg font-bold text-primary">{format(price)}</span>
             {onSale && (
               <span className="text-sm text-muted-foreground line-through">
-                ${compareAt!.toFixed(2)}
+                {format(compareAt!)}
               </span>
             )}
           </div>
