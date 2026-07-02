@@ -62,41 +62,41 @@
 }
 
 :root {
-  --radius: 0.625rem;
-  /* FX Mods — dark base, lime button accent, blue brand */
-  --background: #1F1F21;
-  --foreground: oklch(0.98 0.002 250);
-  --card: #1F1F21;
-  --card-foreground: oklch(0.98 0.002 250);
-  --popover: #1F1F21;
-  --popover-foreground: oklch(0.98 0.002 250);
-  --primary: #E3FC02;                       /* lime button accent */
-  --primary-foreground: #1F1F21;
-  --secondary: oklch(0.28 0.005 250);
-  --secondary-foreground: oklch(0.98 0.002 250);
-  --muted: oklch(0.24 0.01 250);
-  --muted-foreground: oklch(0.72 0.01 250);
-  --accent: #E3FC02;
-  --accent-foreground: #1F1F21;
+  --radius: 1rem;
+  /* FX Mods — Impact-theme inspired: soft light surface, deep ink text */
+  --background: #F2F2F0;
+  --foreground: #0A0A0A;
+  --card: #FFFFFF;
+  --card-foreground: #0A0A0A;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A0A0A;
+  --primary: #0A0A0A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #E8E8E4;
+  --secondary-foreground: #0A0A0A;
+  --muted: #EDEDE8;
+  --muted-foreground: #6B6B66;
+  --accent: #0A0A0A;
+  --accent-foreground: #FFFFFF;
   --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.98 0.002 250);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: #E3FC02;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(10, 10, 10, 0.10);
+  --input: rgba(10, 10, 10, 0.14);
+  --ring: #0A0A0A;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: #1F1F21;
-  --sidebar-foreground: oklch(0.98 0.002 250);
-  --sidebar-primary: #E3FC02;
-  --sidebar-primary-foreground: #1F1F21;
-  --sidebar-accent: oklch(0.28 0.005 250);
-  --sidebar-accent-foreground: oklch(0.98 0.002 250);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: #E3FC02;
-  --font-display: "Bebas Neue", "Impact", system-ui, sans-serif;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0A0A0A;
+  --sidebar-primary: #0A0A0A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #EDEDE8;
+  --sidebar-accent-foreground: #0A0A0A;
+  --sidebar-border: rgba(10, 10, 10, 0.10);
+  --sidebar-ring: #0A0A0A;
+  --font-display: "Inter", system-ui, -apple-system, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
@@ -149,8 +149,8 @@
 
   h1, h2, h3, .display {
     font-family: var(--font-display);
-    letter-spacing: 0.005em;
-    font-weight: 400;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 }
 
@@ -158,8 +158,8 @@
   .font-display { font-family: var(--font-display); }
   .bg-grid {
     background-image:
-      linear-gradient(to right, oklch(1 0 0 / 0.06) 1px, transparent 1px),
-      linear-gradient(to bottom, oklch(1 0 0 / 0.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
     background-size: 48px 48px;
   }
   .text-stroke {
